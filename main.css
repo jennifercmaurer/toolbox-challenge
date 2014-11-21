@@ -1,0 +1,27 @@
+
+#game-board img {
+	width: 150px;
+	height: 150px;
+	margin-right: 5px;
+}
+
+#record {
+	font-family: "Helvetica Nueue", sans-serif;
+	color: #FFFFFF;
+}
+
+#record h1 {
+	font-size: 50px;
+}
+
+body {
+	background-color: #123456;
+}
+
+#winner {
+	display: none;
+	font-family: "Helvetica Nueue", sans-serif;
+	font-size: 72px;
+	color: #FFFFFF;
+	height: 0;
+}
