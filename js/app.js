@@ -98,7 +98,7 @@ function playGame() {
 		if (tile.flipped == true) { //if already flipped
 			return;
 		}
-
+		
 		if (first == true) { //if it's the first flip
 			if (missedMatches == 0) { //start timer after 1st tile's clicked
 				timer();
@@ -147,16 +147,23 @@ function flipTile(tile, img) {
 			img.attr('src', 'img/tile-back.png');  //switch to back
 		}
 		tile.flipped = !tile.flipped;
-		img.fadeIn(100);
+			img.fadeIn(100);
 	}); //after fadeOut
 	//on click of gameboard images
 }
 
 function resetGame() {
+	matches = 0;
+	remainingPictures = 8;
+	missedMatches = 0;
+	firstImage;
+	first = true;
+	elapsedSeconds = 0;
+	startTime;
 	$('#game-board').empty();
-	$('#matches').text(0);
-	$('#missed').text(0);
-	$('#remaining').text(8);
+	$('#matches').text('' + matches);
+	$('#missed').text('' + missedMatches);
+	$('#remaining').text('' + remainingPictures);
 	startTime = _.now(); //start time
 }
 
@@ -166,6 +173,9 @@ function timer() {
 		var elapsedSeconds = Math.floor((_.now() - startTime) / 1000);
 		$('#elapsed-seconds').text(elapsedSeconds + " seconds"); //BETTER CODE
 		if (elapsedSeconds >= startTime) {
+			window.clearInterval(timer);
+		}
+		if (matches == 8) {
 			window.clearInterval(timer);
 		}
 	}, 1000);
